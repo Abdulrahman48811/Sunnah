@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Button } from 'react-native';
 import React from 'react';
+import { Icon } from 'react-native-elements';
 import { useState, useEffect } from 'react';
 import { Card } from 'react-native-elements';
+
 import List from './List';
 
 
@@ -15,6 +17,25 @@ const HomeScreen = () => {
   const [date, setDate] = useState([]);
   const [monthhijri, setMonth] = useState([]);
   const [abhijri, setAb] = useState([]);
+  const [audio, SetAudio] = useState([]);
+
+
+
+
+  const getAudio = async () => {
+    try {
+      const response = await fetch("https://api.quran.com/api/v4/chapter_recitations/9?language=en");
+
+      const json = await response.json();
+      SetAudio(json.audio_files[0].audio_url);
+
+
+
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  }
   const getDate = async () => {
     try {
       const response = await fetch("http://api.aladhan.com/v1/gToH");
@@ -35,8 +56,9 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getDate();
+    getAudio();
   }, []);
-
+  let quranAudio = audio; 
   let hijrimonth = monthhijri;
   let hijriDay = date.day;
   let hijriYear = date.year;
@@ -78,6 +100,19 @@ const HomeScreen = () => {
       <Text style={styles.quran}>
         Quran recitation of the Day: Minshawi Al-Asr
       </Text>
+      <View style={styles.audio}>
+        <View style={{top:17, left:35}}>
+        <Icon 
+       
+        name='play'
+          type='font-awesome'
+          color='black' 
+          style={{width:20, height:26.3} }
+          
+          />
+          
+          </View>
+      </View>
 
       <StatusBar style="auto" />
 
@@ -116,5 +151,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     top: 40
   }
+  ,
+  audio: {
+    position: 'absolute',
+    width: 330,
+    height: 60,
+    left: 50,
+    top: 640,
+    backgroundColor: '#d9d9d9',
+    borderRadius:15,
+    
+
+  },
+ 
 
 });
