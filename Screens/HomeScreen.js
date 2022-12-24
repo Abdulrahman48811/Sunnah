@@ -4,6 +4,7 @@ import React from 'react';
 import { Icon } from 'react-native-elements';
 import { useState, useEffect } from 'react';
 import { Card } from 'react-native-elements';
+import { Audio } from 'expo-av';
 
 import List from './List';
 
@@ -18,7 +19,9 @@ const HomeScreen = () => {
   const [monthhijri, setMonth] = useState([]);
   const [abhijri, setAb] = useState([]);
   const [audio, SetAudio] = useState([]);
-
+  const [sound, setSound] = React.useState();
+  const [Play, setPlay] = useState('play');
+  const [playAudio, setPlayAudio] = useState(false);
 
 
 
@@ -27,7 +30,7 @@ const HomeScreen = () => {
       const response = await fetch("https://api.quran.com/api/v4/chapter_recitations/9?language=en");
 
       const json = await response.json();
-      SetAudio(json.audio_files[0].audio_url);
+      SetAudio(json.audio_files[96].audio_url);
 
 
 
@@ -36,6 +39,29 @@ const HomeScreen = () => {
       setLoading(false);
     }
   }
+
+
+  // const playSound= async () => {
+  //     const url =
+  //       'https://download.quranicaudio.com/qdc/siddiq_minshawi/murattal/103.mp3';
+  //     console.log('Loading Sound');
+  //     const { sound } = await Audio.Sound.createAsync(url);
+  //     setSound(sound);
+  //     console.log('Playing Sound');
+  //     await sound.playAsync();
+
+
+  //   }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+        console.log('Unloading Sound');
+        sound.unloadAsync();
+      }
+      : undefined;
+  }, [sound]);
+
   const getDate = async () => {
     try {
       const response = await fetch("http://api.aladhan.com/v1/gToH");
@@ -58,12 +84,15 @@ const HomeScreen = () => {
     getDate();
     getAudio();
   }, []);
-  let quranAudio = audio; 
+  let quranAudio = audio;
   let hijrimonth = monthhijri;
   let hijriDay = date.day;
   let hijriYear = date.year;
   let hijriAb = abhijri
   let hijriDate = hijrimonth + " " + hijriDay + " " + hijriYear + " " + hijriAb;
+
+
+  let status = Play;
   return (
 
     <View style={styles.container}>
@@ -101,17 +130,45 @@ const HomeScreen = () => {
         Quran recitation of the Day: Minshawi Al-Asr
       </Text>
       <View style={styles.audio}>
-        <View style={{top:17, left:35}}>
-        <Icon 
-       
-        name='play'
-          type='font-awesome'
-          color='black' 
-          style={{width:20, height:26.3} }
-          
+
+        <View style={{ top: 17, left: 35 }}>
+
+          <Icon
+
+            name={status}
+            type='font-awesome'
+            color='black'
+            style={{ width: 20, height: 26.3 }}
+            onPress={async () => {
+              if (!playAudio) {
+                await Audio.Sound.createAsync(
+                  { uri: audio },
+                  { shouldPlay: 'true' },
+
+
+
+
+
+                );
+                console.log(durationMillis);
+                setPlay('pause');
+                setPlayAudio(true);
+              }
+              else {
+
+                setPlay('play');
+                setPlayAudio(false)
+                
+
+              }
+            }
+            }
+
+
+
           />
-          
-          </View>
+
+        </View>
       </View>
 
       <StatusBar style="auto" />
@@ -159,10 +216,10 @@ const styles = StyleSheet.create({
     left: 50,
     top: 640,
     backgroundColor: '#d9d9d9',
-    borderRadius:15,
-    
+    borderRadius: 15,
+
 
   },
- 
+
 
 });
