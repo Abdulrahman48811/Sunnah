@@ -5,12 +5,23 @@ import { Icon } from 'react-native-elements';
 import { useState, useEffect } from 'react';
 import { Card } from 'react-native-elements';
 import { Audio } from 'expo-av';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import List from './List';
 
 
 
+const tab = createBottomTabNavigator();
 
+const BottomTab = () => {
+  return (
+    
+  <tab.Navigator>
+    <tab.Screen name='Home' component={HomeScreen} />
+    <tab.Screen name='List' component={List} />
+  </tab.Navigator>
+  )
+}
 
 
 const HomeScreen = () => {
@@ -30,7 +41,7 @@ const HomeScreen = () => {
       const response = await fetch("https://api.quran.com/api/v4/chapter_recitations/9?language=en");
 
       const json = await response.json();
-      SetAudio(json.audio_files[96].audio_url);
+      SetAudio(json.audio_files[107].audio_url);
 
 
 
@@ -143,14 +154,10 @@ const HomeScreen = () => {
               if (!playAudio) {
                 await Audio.Sound.createAsync(
                   { uri: audio },
-                  { shouldPlay: 'true' },
-
-
-
-
+                  { shouldPlay: 'true' }
 
                 );
-                console.log(durationMillis);
+
                 setPlay('pause');
                 setPlayAudio(true);
               }
@@ -158,7 +165,7 @@ const HomeScreen = () => {
 
                 setPlay('play');
                 setPlayAudio(false)
-                
+
 
               }
             }
@@ -169,6 +176,9 @@ const HomeScreen = () => {
           />
 
         </View>
+        
+         
+        
       </View>
 
       <StatusBar style="auto" />
