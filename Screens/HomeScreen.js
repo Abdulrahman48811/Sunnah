@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ActivityIndicator, Button } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList } from 'react-native';
 import React from 'react';
 import { Icon } from 'react-native-elements';
 import { useState, useEffect } from 'react';
@@ -41,7 +41,7 @@ const HomeScreen = () => {
       const response = await fetch("https://api.quran.com/api/v4/chapter_recitations/9?language=en");
 
       const json = await response.json();
-      SetAudio(json.audio_files[107].audio_url);
+      SetAudio(json.audio_files[102].audio_url);
 
 
 
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     width: 330,
     height: 60,
     left: 50,
-    top: 640,
+    top: 590,
     backgroundColor: '#d9d9d9',
     borderRadius: 15,
 
