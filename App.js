@@ -31,6 +31,7 @@ export default function App() {
           options={
             {
               tabBarLabel: 'List',
+              
               tabBarLabelStyle: { color: 'white' },
               tabBarIcon: () => (
                 <Icon name='book' color='blue' size={40} />
