@@ -52,17 +52,6 @@ const HomeScreen = () => {
   }
 
 
-  // const playSound= async () => {
-  //     const url =
-  //       'https://download.quranicaudio.com/qdc/siddiq_minshawi/murattal/103.mp3';
-  //     console.log('Loading Sound');
-  //     const { sound } = await Audio.Sound.createAsync(url);
-  //     setSound(sound);
-  //     console.log('Playing Sound');
-  //     await sound.playAsync();
-
-
-  //   }
 
   useEffect(() => {
     return sound
@@ -123,6 +112,7 @@ const HomeScreen = () => {
             hijriDate}
         </Text>
       </View>
+    
       <View >
 
         <Card containerStyle={styles.hadith}>
