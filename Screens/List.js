@@ -12,7 +12,7 @@ import React, { useState, useEffect } from "react";
 import { TouchableOpacity } from "react-native";
 import HadithList from "./HadithByCategory";
 
-const List = () => {
+const List = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -32,9 +32,12 @@ const List = () => {
   };
 
   const Item = ({ title, id }) => (
+    
+    
     <TouchableOpacity
       style={styles.item}
       onPress={() => {
+        navigation.navigate('HadithByCategory' ,{HadithID: id, category:title} )
         console.log(id);
       }}
     >
