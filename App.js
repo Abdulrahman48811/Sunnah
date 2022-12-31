@@ -3,21 +3,39 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./Screens/HomeScreen";
 import List from "./Screens/List";
 import { Icon } from "react-native-elements";
+import { createStackNavigator } from "@react-navigation/stack";
+import "react-native-gesture-handler";
 import HadithList from "./Screens/HadithByCategory";
-
 export default function App() {
   const tab = createBottomTabNavigator();
+  const Stack = createStackNavigator();
 
-  const HadithList = ({navigation}) => {
- 
+  const MyStack = () => {
     return (
-  
-    <HadithList/>
-)
-  }
-
-
-
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Bottom"
+          options={{ headerShown: false }}
+          component={BottomTab}
+        />
+        <Stack.Screen
+          name="Home"
+          options={{ headerShown: false }}
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name="List"
+          options={{ headerShown: false }}
+          component={List}
+        />
+        <Stack.Screen
+          name="HadithByCategory"
+          options={{ headerShown: false }}
+          component={HadithList}
+        />
+      </Stack.Navigator>
+    );
+  };
   const BottomTab = () => {
     return (
       <tab.Navigator
@@ -61,7 +79,7 @@ export default function App() {
   };
   return (
     <NavigationContainer>
-      <BottomTab />
+      <MyStack />
     </NavigationContainer>
   );
 }
