@@ -11,8 +11,9 @@ import React, { useState, useEffect } from "react";
 
 import { TouchableOpacity } from "react-native";
 import HadithList from "./HadithByCategory";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-const List = ({navigation}) => {
+const List = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -32,54 +33,60 @@ const List = ({navigation}) => {
   };
 
   const Item = ({ title, id }) => (
-    
-    
-    <TouchableOpacity
+
+
+    <TouchableWithoutFeedback
       style={styles.item}
       onPress={() => {
-        navigation.navigate('HadithByCategory' ,{HadithID: id, category:title} )
-        console.log(id);
+        navigation.navigate('HadithByCategory', { HadithID: id, category: title, navigate: navigation })
+
+
       }}
     >
       <Text style={styles.title}>{title}</Text>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
+   
   );
 
-  const renderItem = ({ item }) => <Item title={item.title} id={item.id} />;
+  const renderItem = ({ item }) => 
+  <Item  title={item.title} id={item.id} />;
 
   useEffect(() => {
     getTitle();
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text
-          style={{
-            fontSize: 24,
-            right: 40,
-            top: 20,
-            fontStyle: "italic",
-            color: "#9496a1",
-          }}
-        >
-          {" "}
-          List of Hadiths
-        </Text>
-      </View>
+    <View style={styles.container}>
+    <FlatList
+      ListHeaderComponent={
+        <>
 
-      <Text style={{ fontSize: 24, top: 140, left: 20 }}>Topics:</Text>
+          <View style={styles.header}>
+            <Text
+              style={{
+                fontSize: 24,
+                right: 40,
+                top: 20,
+                fontStyle: "italic",
+                color: "#9496a1",
+              }}
+            >
+              {" "}
+              List of Hadiths
+            </Text>
+          </View>
 
-      <View>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          style={{ top: 150 }}
-          contentContainerStyle={{ paddingBottom: 200 }}
-        />
-      </View>
-    </ScrollView>
+          <Text style={{ fontSize: 24, top: 140, left: 20 }}>Topics:</Text>
+        </>
+      }
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      
+      contentContainerStyle={{ paddingBottom: 200 }}
+    />
+</View>
+
   );
 };
 export default List;
@@ -101,6 +108,9 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
+    top:150
+    
+    
   },
   title: {
     fontSize: 15,
