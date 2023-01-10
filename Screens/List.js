@@ -6,12 +6,13 @@ import {
   Button,
   FlatList,
   ScrollView,
+  
 } from "react-native";
 import React, { useState, useEffect } from "react";
 
 import { TouchableOpacity } from "react-native";
-import HadithList from "./HadithByCategory";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+
+
 
 const List = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
@@ -35,16 +36,20 @@ const List = ({ navigation }) => {
   const Item = ({ title, id }) => (
 
 
-    <TouchableWithoutFeedback
-      style={styles.item}
+  
+  
+    <TouchableOpacity
+      
       onPress={() => {
         navigation.navigate('HadithByCategory', { HadithID: id, category: title, navigate: navigation })
 
 
       }}
     >
+      <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
-    </TouchableWithoutFeedback>
+      </View>
+    </TouchableOpacity>
    
   );
 
@@ -69,6 +74,7 @@ const List = ({ navigation }) => {
                 top: 20,
                 fontStyle: "italic",
                 color: "#9496a1",
+                
               }}
             >
               {" "}
@@ -76,7 +82,7 @@ const List = ({ navigation }) => {
             </Text>
           </View>
 
-          <Text style={{ fontSize: 24, top: 140, left: 20 }}>Topics:</Text>
+          <Text style={{ fontSize: 24, top: 140, left: 20 ,marginBottom:150}}>Topics:</Text>
         </>
       }
       data={data}
@@ -102,13 +108,15 @@ const styles = StyleSheet.create({
     top: 80,
     backgroundColor: "#5d5f66",
     alignItems: "center",
+    
   },
   item: {
     backgroundColor: "#a1a2ab",
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
-    top:150
+    
+    
     
     
   },
