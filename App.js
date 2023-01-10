@@ -6,6 +6,7 @@ import { Icon } from "react-native-elements";
 import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
 import HadithList from "./Screens/HadithByCategory";
+import HadithInfo from "./Screens/HadithInfo";
 export default function App() {
   const tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
@@ -33,6 +34,12 @@ export default function App() {
           options={{ headerShown: false }}
           component={HadithList}
         />
+         <Stack.Screen
+          name="HadithInfo"
+          options={{ headerShown: false }}
+          component={HadithInfo}
+        />
+
       </Stack.Navigator>
     );
   };
