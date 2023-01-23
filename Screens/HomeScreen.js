@@ -29,8 +29,6 @@ const BottomTab = () => {
   );
 };
 
-
-
 const HomeScreen = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [date, setDate] = useState([]);
@@ -41,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
   const [Play, setPlay] = useState("play");
   const [playAudio, setPlayAudio] = useState(false);
   const [data, setdata] = useState([]);
-  const [unmute, mute]  = useState("unmute");
+  const [unmute, mute] = useState("unmute");
   const hadeith = 65054;
   const getHadith = async () => {
     try {
@@ -54,7 +52,6 @@ const HomeScreen = ({ navigation }) => {
       setdata(json);
     } catch (error) {}
   };
-
 
   const getAudio = async () => {
     try {
@@ -69,8 +66,6 @@ const HomeScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
-
- 
 
   const getDate = async () => {
     try {
@@ -98,7 +93,7 @@ const HomeScreen = ({ navigation }) => {
   let hijriYear = date.year;
   let hijriAb = abhijri;
   let hijriDate = hijrimonth + " " + hijriDay + " " + hijriYear + " " + hijriAb;
- 
+
   let status = Play;
   return (
     <View style={styles.container}>
@@ -163,16 +158,20 @@ const HomeScreen = ({ navigation }) => {
 
       <View>
         <Card containerStyle={styles.hadith}>
-          <Card.Title onPress={() => {
-           navigation.navigate("HadithInfo", { hadeith  });
-          }
-          }>Hadith Of The Day</Card.Title>
-           <TouchableOpacity onPress={() => {
-             navigation.navigate("HadithInfo", { itemid:hadeith  });
-           }}>
-          <Text>{data.hadeeth} </Text>
+          <Card.Title
+            onPress={() => {
+              navigation.navigate("HadithInfo", { hadeith });
+            }}
+          >
+            Hadith Of The Day
+          </Card.Title>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("HadithInfo", { itemid: hadeith });
+            }}
+          >
+            <Text>{data.hadeeth} </Text>
           </TouchableOpacity>
-          
         </Card>
       </View>
       <Text style={styles.quran}>
@@ -188,10 +187,8 @@ const HomeScreen = ({ navigation }) => {
             onPress={async () => {
               if (!playAudio) {
                 await Audio.Sound.createAsync(
-                   {uri: audio} ,
-                   {shouldPlay: "true" 
-                   }
-                  
+                  { uri: audio },
+                  { shouldPlay: "true" }
                 );
 
                 setPlay("pause");
