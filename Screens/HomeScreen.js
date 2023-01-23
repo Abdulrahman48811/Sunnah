@@ -14,6 +14,7 @@ import { Audio } from "expo-av";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import List from "./List";
+import { color } from "@rneui/base";
 
 const tab = createBottomTabNavigator();
 
@@ -26,6 +27,8 @@ const BottomTab = () => {
   );
 };
 
+
+
 const HomeScreen = () => {
   const [isLoading, setLoading] = useState(true);
   const [date, setDate] = useState([]);
@@ -35,6 +38,20 @@ const HomeScreen = () => {
   const [sound, setSound] = React.useState();
   const [Play, setPlay] = useState("play");
   const [playAudio, setPlayAudio] = useState(false);
+  const [data, setdata] = useState([]);
+  
+  const getHadith = async () => {
+    try {
+      const response = await fetch(
+        `https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=${65054}`
+      );
+
+      const json = await response.json();
+
+      setdata(json);
+    } catch (error) {}
+  };
+
 
   const getAudio = async () => {
     try {
@@ -70,6 +87,7 @@ const HomeScreen = () => {
   useEffect(() => {
     getDate();
     getAudio();
+    getHadith();
   }, []);
   let quranAudio = audio;
   let hijrimonth = monthhijri;
@@ -77,7 +95,7 @@ const HomeScreen = () => {
   let hijriYear = date.year;
   let hijriAb = abhijri;
   let hijriDate = hijrimonth + " " + hijriDay + " " + hijriYear + " " + hijriAb;
-
+ 
   let status = Play;
   return (
     <View style={styles.container}>
@@ -143,7 +161,8 @@ const HomeScreen = () => {
         <Card containerStyle={styles.hadith}>
           <Card.Title>Hadith Of The Day</Card.Title>
           <View></View>
-          <Text>text goes here</Text>
+          <Text>{data.hadeeth} </Text>
+          
         </Card>
       </View>
       <Text style={styles.quran}>
