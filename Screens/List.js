@@ -9,7 +9,7 @@ import {
   
 } from "react-native";
 import React, { useState, useEffect } from "react";
-
+import { Input } from "react-native-elements";
 import { TouchableOpacity } from "react-native";
 
 
@@ -78,7 +78,7 @@ const List = ({ navigation }) => {
               }}
             >
               {" "}
-              List of Hadiths
+              List of Hadiths 
             </Text>
           </View>
 
