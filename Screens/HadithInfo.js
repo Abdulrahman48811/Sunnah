@@ -64,7 +64,7 @@ const HadithInfo = (id) => {
         <Text style={{top:40, color:'#a8a3b5'}}>
             Refrence:
         </Text>
-        <Text style={{top:50, width:350, color:'white'}}>
+        <Text style={{top:50, width:350, color:'white', fontSize:8}}>
             
             {dataar.reference}
         </Text>
