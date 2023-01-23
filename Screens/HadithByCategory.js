@@ -43,7 +43,6 @@ const HadithList = (id) => {
       style={styles.ahadith}
       onPress={() => {
         navigation.navigate("HadithInfo", { itemid: id });
-        
       }}
     >
       <Text
@@ -67,7 +66,6 @@ const HadithList = (id) => {
                   top: 24,
                   fontStyle: "italic",
                   color: "#197784",
-                  
                 }}
               >
                 {" "}
@@ -80,7 +78,6 @@ const HadithList = (id) => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingBottom: 200 }}
-        
       />
     </View>
   );
@@ -98,14 +95,14 @@ const styles = StyleSheet.create({
     top: 80,
     backgroundColor: "#4B4874",
     alignItems: "center",
-    marginBottom:150
+    marginBottom: 150,
   },
   ahadith: {
     backgroundColor: "#227DA4",
     width: 349,
     height: 130,
     borderRadius: 22,
-    
+
     borderColor: "black",
     borderWidth: 1,
     alignSelf: "center",
