@@ -84,6 +84,8 @@ export default function App() {
       </tab.Navigator>
     );
   };
+
+  //testing github
   return (
     <NavigationContainer>
       <MyStack />
