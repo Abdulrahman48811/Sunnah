@@ -15,6 +15,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import List from "./List";
 import { color } from "@rneui/base";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Link } from "@react-navigation/native";
 
 const tab = createBottomTabNavigator();
 
@@ -29,7 +31,7 @@ const BottomTab = () => {
 
 
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [date, setDate] = useState([]);
   const [monthhijri, setMonth] = useState([]);
@@ -39,7 +41,8 @@ const HomeScreen = () => {
   const [Play, setPlay] = useState("play");
   const [playAudio, setPlayAudio] = useState(false);
   const [data, setdata] = useState([]);
-  
+  const [unmute, mute]  = useState("unmute");
+  const hadeith = 65054;
   const getHadith = async () => {
     try {
       const response = await fetch(
@@ -113,6 +116,7 @@ const HomeScreen = () => {
       >
         بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
       </Text>
+      <Link to="google.com"></Link>
       <View
         style={{
           display: "flex",
@@ -159,9 +163,15 @@ const HomeScreen = () => {
 
       <View>
         <Card containerStyle={styles.hadith}>
-          <Card.Title>Hadith Of The Day</Card.Title>
-          <View></View>
+          <Card.Title onPress={() => {
+           navigation.navigate("HadithInfo", { hadeith  });
+          }
+          }>Hadith Of The Day</Card.Title>
+           <TouchableOpacity onPress={() => {
+             navigation.navigate("HadithInfo", { itemid:hadeith  });
+           }}>
           <Text>{data.hadeeth} </Text>
+          </TouchableOpacity>
           
         </Card>
       </View>
@@ -178,8 +188,10 @@ const HomeScreen = () => {
             onPress={async () => {
               if (!playAudio) {
                 await Audio.Sound.createAsync(
-                  { uri: audio },
-                  { shouldPlay: "true" }
+                   {uri: audio} ,
+                   {shouldPlay: "true" 
+                   }
+                  
                 );
 
                 setPlay("pause");
