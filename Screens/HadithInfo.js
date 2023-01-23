@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
+import { Icon } from "react-native-elements";
 const HadithInfo = (id) => {
   const [dataen, setdataen] = useState([]);
   const [dataar, setdataar] = useState([]);
@@ -41,28 +42,36 @@ const HadithInfo = (id) => {
   return (
     <ScrollView style={styles.container} contentContainerStyle={{paddingBottom:400}}
     >
-      <View style={{ width: 350,  top: 133, left: 40 }}>
-        <Text style={{ fontSize: 15 }}> {dataar.hadeeth}</Text>
-        <Text style={{top:15}}> {dataar.attribution}</Text>
+       <View style={{right:180, top:50, }}>
+      <Icon name="star" color="#B08C8C" style={{height:29}} />
+      </View>
+      
+      <View style={{ width: 350,  top: 113, left: 40 }}>
+        <Text style={{ fontSize: 15 , color:'white'}}> {dataar.hadeeth}</Text>
+        <Text style={{top:15 ,color:'orange'}}> {dataar.attribution}</Text>
       </View>
 
-      <View style={{ top: 190, left: 40, width: 350 }}>
-        <Text style={{ fontSize: 15 }}>{dataen.hadeeth}</Text>
+      <View style={{ top: 175, left: 40, width: 350  }}>
+        <Text style={{ fontSize: 15, color:'white' }}>{dataen.hadeeth}</Text>
       </View>
-      <View style={{left:40, top:250 }}>
-        <Text style={{fontSize:25 , color:'white'}}>
+      <View style={{left:40, top:225 }}>
+        <Text style={{fontSize:25 , color:'#DCA6A6'}}>
            Hadith Explanation:
         </Text>
-        <Text style={{width:350}}>
+        <Text style={{width:350, color:'white'}}>
             {dataen.explanation}
         </Text>
-        <Text style={{top:40, color:'white'}}>
+        <Text style={{top:40, color:'#a8a3b5'}}>
             Refrence:
         </Text>
-        <Text style={{top:50, width:350}}>
+        <Text style={{top:50, width:350, color:'white'}}>
             
             {dataar.reference}
         </Text>
+
+        <View style={{top:170, left:140}}>
+           <Text style={{color:"#976C69"}}>App Name</Text>
+        </View>
       </View>
 
     
@@ -74,6 +83,6 @@ const styles = StyleSheet.create({
   container: {
     
    
-    backgroundColor: "#6181D2",
+    backgroundColor: "#7B5A58",
   },
 });
