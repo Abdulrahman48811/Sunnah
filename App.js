@@ -47,7 +47,7 @@ export default function App() {
     return (
       <tab.Navigator
         screenOptions={{
-          tabBarStyle: { backgroundColor: "#e3dce3" },
+          tabBarStyle: { backgroundColor: "#ddd8ed" },
           headerShown: false,
         }}
       >
