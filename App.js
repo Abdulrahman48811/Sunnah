@@ -76,7 +76,7 @@ export default function App() {
             tabBarLabel: "Favorites",
             tabBarLabelStyle: { color: "black" },
             tabBarIcon: () => (
-              <Icon name="heart" type="font-awesome" color="black" size={40} />
+              <Icon name="heart" type="font-awesome" color="black" size={30} />
             ),
           }}
           component={List}
