@@ -48,11 +48,13 @@ const HadithInfo = (id) => {
       
       <View style={{ width: 350,  top: 113, left: 40 }}>
         <Text style={{ fontSize: 15 , color:'white'}}> {dataar.hadeeth}</Text>
-        <Text style={{top:15 ,color:'orange'}}> {dataar.attribution}</Text>
+        <Text style={{top:15 ,color:'orange'}}> {dataar.attribution} </Text>
+        
       </View>
 
       <View style={{ top: 175, left: 40, width: 350  }}>
         <Text style={{ fontSize: 15, color:'white' }}>{dataen.hadeeth}</Text>
+        {/* <Text style={{top:8}}>{dataen.grade}</Text> */}
       </View>
       <View style={{left:40, top:225 }}>
         <Text style={{fontSize:25 , color:'#DCA6A6'}}>

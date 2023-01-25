@@ -158,9 +158,9 @@ const HomeScreen = ({ navigation }) => {
 
       <View>
         <Card containerStyle={styles.hadith}>
-          <Card.Title
+          <Card.Title style={{color:"black"}}
             onPress={() => {
-              navigation.navigate("HadithInfo", { hadeith });
+              navigation.navigate("HadithInfo", { itemid: hadeith });
             }}
           >
             Hadith Of The Day
@@ -211,10 +211,10 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#94b8f7",
+    backgroundColor: "#727cd4",
   },
   hadith: {
-    backgroundColor: "#A5E1F4",
+    backgroundColor: "#9fa2bf",
     height: 231,
     width: 343,
     marginTop: 250,

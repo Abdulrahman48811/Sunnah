@@ -61,9 +61,9 @@ const HadithList = (id) => {
             <View style={styles.header}>
               <Text
                 style={{
-                  fontSize: 20,
-                  right: 40,
-                  top: 24,
+                  fontSize: 18,
+                 left:-10,
+                  top:20 ,
                   fontStyle: "italic",
                   color: "#197784",
                 }}
@@ -87,10 +87,10 @@ export default HadithList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#197784",
+    backgroundColor: "#2E6CB0",
   },
   header: {
-    width: 493,
+    width: 453,
     height: 70,
     top: 80,
     backgroundColor: "#4B4874",
@@ -99,9 +99,9 @@ const styles = StyleSheet.create({
   },
   ahadith: {
     backgroundColor: "#227DA4",
-    width: 349,
-    height: 130,
-    borderRadius: 22,
+    width: 355,
+    
+    borderRadius: 10,
 
     borderColor: "black",
     borderWidth: 1,
