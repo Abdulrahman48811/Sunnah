@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
 import HadithList from "./Screens/HadithByCategory";
 import HadithInfo from "./Screens/HadithInfo";
+
 export default function App() {
   const tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
