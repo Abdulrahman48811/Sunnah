@@ -9,10 +9,29 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Icon } from "react-native-elements";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const HadithInfo = (id) => {
   const [dataen, setdataen] = useState([]);
   const [dataar, setdataar] = useState([]);
+  const data = "";
   const HadithID = id.route.params.itemid;
+   
+   const storeData = async (value) => {
+    try {
+      await AsyncStorage.getItem('fav').then
+      (favs => {
+        favs = favs == null ? [] : JSON.parse(favs)
+        favs.push(value)
+        return AsyncStorage.setItem('fav' , JSON.stringify(favs))
+      })
+    
+    } catch (error) {
+      console.error();
+    }
+   }
+   
+
   const getHadithAr = async () => {
     try {
       const response = await fetch(
@@ -38,6 +57,8 @@ const HadithInfo = (id) => {
   useEffect(() => {
     getHadithEn();
     getHadithAr();
+    
+    
   }, []);
   return (
     <ScrollView style={styles.container} contentContainerStyle={{paddingBottom:400}}
@@ -63,7 +84,9 @@ const HadithInfo = (id) => {
         <Text style={{width:350, color:'white'}}>
             {dataen.explanation}
         </Text>
-        <Icon reverse  name="bookmark" type="font-awesome" size={25}/>
+        <View style={{left:-200, top:10, height:80}}>
+        <Icon   name="bookmark" type="font-awesome" color={"white"} size={45} onPress={() => storeData(HadithID) }/>
+        </View>
         <Text style={{top:15, color:'#a8a3b5'}}>
             Refrence:
         </Text>
