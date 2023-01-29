@@ -8,6 +8,7 @@ import "react-native-gesture-handler";
 import HadithList from "./Screens/HadithByCategory";
 import HadithInfo from "./Screens/HadithInfo";
 import Favorites from "./Screens/Favorites";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function App() {
   const tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
