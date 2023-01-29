@@ -14,9 +14,9 @@ import { TextInput } from "react-native-gesture-handler";
 import SearchInput, { createFilter } from "react-native-search-filter";
 const List = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
-  const [filterdData, setfilterdData] = useState([]);
+  
   const [data, setData] = useState([]);
-  // const [search, setsearch] = useState("");
+  
   const [searchTerm, setSearchTerm] = useState("");
   const KEYS_TO_FILTERS = ["title"];
   const getTitle = async () => {
@@ -33,7 +33,7 @@ const List = ({ navigation }) => {
       //   setData(responseJson);
       // }).catch;
 
-      setfilterdData(json);
+      
       setData(json);
     } catch (error) {
     } finally {
@@ -82,7 +82,7 @@ const List = ({ navigation }) => {
     setSearchTerm(term);
   }
   const filtereddata = data.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
-  console.log(filtereddata)
+  
   return (
     <View style={styles.container}>
       <FlatList
