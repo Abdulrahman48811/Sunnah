@@ -31,7 +31,7 @@ const List = ({ navigation }) => {
       //   setfilterdData(responseJson);
       //   setData(responseJson);
       // }).catch;
-      
+
       setfilterdData(json);
       setData(json);
     } catch (error) {
@@ -42,13 +42,9 @@ const List = ({ navigation }) => {
 
   const searchFilter = (text) => {
     if (text) {
-      const newData = data.filter((item) => {
-        const itemData = item.title
-          ? item.title.toUpperCase()
-          : "".toUpperCase();
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
-      });
+      
+      const newData = data.filter((item) => item.title == text );
+      console.log(newData)
       setfilterdData(newData);
       setsearch(text);
     } else {
