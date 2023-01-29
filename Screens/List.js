@@ -14,9 +14,9 @@ import { TextInput } from "react-native-gesture-handler";
 import SearchInput, { createFilter } from "react-native-search-filter";
 const List = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
-  
+
   const [data, setData] = useState([]);
-  
+
   const [searchTerm, setSearchTerm] = useState("");
   const KEYS_TO_FILTERS = ["title"];
   const getTitle = async () => {
@@ -27,32 +27,12 @@ const List = ({ navigation }) => {
 
       const json = await response.json();
 
-      // then((response) => response.json());
-      // then((responseJson) => {
-      //   setfilterdData(responseJson);
-      //   setData(responseJson);
-      // }).catch;
-
-      
       setData(json);
     } catch (error) {
     } finally {
       setLoading(false);
     }
   };
-
-  // const searchFilter = (text) => {
-  //   if (text) {
-
-  //     const newData = data.filter((item) => item.title == text );
-  //     console.log(newData)
-  //     setfilterdData(newData);
-  //     setsearch(text);
-  //   } else {
-  //     setfilterdData(data);
-  //     setsearch(text);
-  //   }
-  // };
 
   const Item = ({ title, id }) => (
     <TouchableOpacity
@@ -76,13 +56,11 @@ const List = ({ navigation }) => {
     getTitle();
   }, []);
 
-  
-
-  const searchUpdated = (term ) => {
+  const searchUpdated = (term) => {
     setSearchTerm(term);
-  }
+  };
   const filtereddata = data.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
-  
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -111,7 +89,9 @@ const List = ({ navigation }) => {
                 onChangeText={(text) => searchFilter(text)}
               /> */}
               <SearchInput
-              onChangeText={(term) => { searchUpdated(term) }} 
+                onChangeText={(term) => {
+                  searchUpdated(term);
+                }}
                 style={styles.inputsearch}
                 placeholder="Search for Hadith"
               />
