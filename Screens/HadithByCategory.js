@@ -46,7 +46,7 @@ const HadithList = (id) => {
       }}
     >
       <Text
-        style={{ fontSize: 12, alignSelf: "center", top: 10, marginBottom: 20 }}
+        style={{ fontSize: 12, top: 10, marginBottom: 20, marginRight:7, marginLeft: 7, }}
       >
         {title}
       </Text>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     width: 355,
     
     borderRadius: 10,
-
+    // marginLeft: 5,
     borderColor: "black",
     borderWidth: 1,
     alignSelf: "center",
