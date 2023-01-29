@@ -11,13 +11,14 @@ import React, { useState, useEffect } from "react";
 import { Input } from "react-native-elements";
 import { TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-
+import SearchInput, { createFilter } from "react-native-search-filter";
 const List = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [filterdData, setfilterdData] = useState([]);
   const [data, setData] = useState([]);
-  const [search, setsearch] = useState("");
-
+  // const [search, setsearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const KEYS_TO_FILTERS = ["title"];
   const getTitle = async () => {
     try {
       const response = await fetch(
@@ -38,20 +39,20 @@ const List = ({ navigation }) => {
     } finally {
       setLoading(false);
     }
-  }
-
-  const searchFilter = (text) => {
-    if (text) {
-      
-      const newData = data.filter((item) => item.title == text );
-      console.log(newData)
-      setfilterdData(newData);
-      setsearch(text);
-    } else {
-      setfilterdData(data);
-      setsearch(text);
-    }
   };
+
+  // const searchFilter = (text) => {
+  //   if (text) {
+
+  //     const newData = data.filter((item) => item.title == text );
+  //     console.log(newData)
+  //     setfilterdData(newData);
+  //     setsearch(text);
+  //   } else {
+  //     setfilterdData(data);
+  //     setsearch(text);
+  //   }
+  // };
 
   const Item = ({ title, id }) => (
     <TouchableOpacity
@@ -75,6 +76,13 @@ const List = ({ navigation }) => {
     getTitle();
   }, []);
 
+  
+
+  const searchUpdated = (term ) => {
+    setSearchTerm(term);
+  }
+  const filtereddata = data.filter(createFilter(searchTerm, KEYS_TO_FILTERS));
+  console.log(filtereddata)
   return (
     <View style={styles.container}>
       <FlatList
@@ -96,11 +104,16 @@ const List = ({ navigation }) => {
             </View>
 
             <View style={styles.searchcontainer}>
-              <TextInput
+              {/* <TextInput
                 placeholder="Search for hadith.."
                 style={styles.inputsearch}
                 value={search}
                 onChangeText={(text) => searchFilter(text)}
+              /> */}
+              <SearchInput
+              onChangeText={(term) => { searchUpdated(term) }} 
+                style={styles.inputsearch}
+                placeholder="Search for Hadith"
               />
             </View>
 
@@ -111,7 +124,7 @@ const List = ({ navigation }) => {
             </Text>
           </>
         }
-        data={data}
+        data={filtereddata}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ paddingBottom: 200 }}
