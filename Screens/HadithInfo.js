@@ -63,10 +63,11 @@ const HadithInfo = (id) => {
         <Text style={{width:350, color:'white'}}>
             {dataen.explanation}
         </Text>
-        <Text style={{top:40, color:'#a8a3b5'}}>
+        <Icon reverse  name="bookmark" type="font-awesome" size={25}/>
+        <Text style={{top:15, color:'#a8a3b5'}}>
             Refrence:
         </Text>
-        <Text style={{top:50, width:350, color:'white', fontSize:8}}>
+        <Text style={{top:30, width:350, color:'white', fontSize:8}}>
             
             {dataar.reference}
         </Text>
