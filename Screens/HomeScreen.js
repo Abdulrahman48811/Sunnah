@@ -34,12 +34,12 @@ const HomeScreen = ({ navigation }) => {
   const [date, setDate] = useState([]);
   const [monthhijri, setMonth] = useState([]);
   const [abhijri, setAb] = useState([]);
-  const [audio, SetAudio] = useState([]);
-  const [sound, setSound] = React.useState();
-  const [Play, setPlay] = useState("play");
-  const [playAudio, setPlayAudio] = useState(false);
+  // const [audio, SetAudio] = useState([]);
+  // const [sound, setSound] = React.useState();
+  // const [Play, setPlay] = useState("play");
+  // const [playAudio, setPlayAudio] = useState(false);
   const [data, setdata] = useState([]);
-  const [unmute, mute] = useState("unmute");
+  // const [unmute, mute] = useState("unmute");
   const hadeith = 65054;
   const getHadith = async () => {
     try {
@@ -53,19 +53,19 @@ const HomeScreen = ({ navigation }) => {
     } catch (error) {}
   };
 
-  const getAudio = async () => {
-    try {
-      const response = await fetch(
-        "https://api.quran.com/api/v4/chapter_recitations/9?language=en"
-      );
+  // const getAudio = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://api.quran.com/api/v4/chapter_recitations/9?language=en"
+  //     );
 
-      const json = await response.json();
-      SetAudio(json.audio_files[102].audio_url);
-    } catch (error) {
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     const json = await response.json();
+  //     SetAudio(json.audio_files[102].audio_url);
+  //   } catch (error) {
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const getDate = async () => {
     try {
@@ -84,17 +84,17 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     getDate();
-    getAudio();
+    // getAudio();
     getHadith();
   }, []);
-  let quranAudio = audio;
+  // let quranAudio = audio;
   let hijrimonth = monthhijri;
   let hijriDay = date.day;
   let hijriYear = date.year;
   let hijriAb = abhijri;
   let hijriDate = hijrimonth + " " + hijriDay + " " + hijriYear + " " + hijriAb;
 
-  let status = Play;
+  // let status = Play;
   return (
     <View style={styles.container}>
       <Text
@@ -177,7 +177,7 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.quran}>
         Quran recitation of the Day: Minshawi Al-Asr
       </Text>
-      <View style={styles.audio}>
+      {/* <View style={styles.audio}>
         <View style={{ top: 17, left: 35 }}>
           <Icon
             name={status}
@@ -200,7 +200,7 @@ const HomeScreen = ({ navigation }) => {
             }}
           />
         </View>
-      </View>
+      </View> */}
 
       <StatusBar style="auto" />
     </View>
@@ -229,13 +229,13 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     top: 40,
   },
-  audio: {
-    position: "absolute",
-    width: 330,
-    height: 60,
-    left: 50,
-    top: 590,
-    backgroundColor: "#d9d9d9",
-    borderRadius: 15,
-  },
+  // audio: {
+  //   position: "absolute",
+  //   width: 330,
+  //   height: 60,
+  //   left: 50,
+  //   top: 590,
+  //   backgroundColor: "#d9d9d9",
+  //   borderRadius: 15,
+  // },
 });
