@@ -93,7 +93,7 @@ const List = ({ navigation }) => {
                   searchUpdated(term);
                 }}
                 style={styles.inputsearch}
-                placeholder="Search for Hadith"
+                placeholder="Search for Hadith..."
               />
             </View>
 
