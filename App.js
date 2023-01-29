@@ -7,6 +7,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
 import HadithList from "./Screens/HadithByCategory";
 import HadithInfo from "./Screens/HadithInfo";
+import Ionicons from "react-native-vector-icons/Ionicons";
+// import Ionicons from "@expo/vector-icons/Ionicons";
 import Favorites from "./Screens/Favorites";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function App() {
@@ -62,7 +64,7 @@ export default function App() {
           options={{
             tabBarLabel: "Home",
             tabBarLabelStyle: { color: "black" },
-            tabBarIcon: () => <Icon name="home" color="black" size={40} />,
+            tabBarIcon: () => <Ionicons name="home" color="black" size={26}/>,
           }}
           component={HomeScreen}
         />
@@ -72,7 +74,7 @@ export default function App() {
             tabBarLabel: "List",
 
             tabBarLabelStyle: { color: "black" },
-            tabBarIcon: () => <Icon name="book" color="black" size={40} />,
+            tabBarIcon: () => <Ionicons name="bookmarks" color="black" size={26}/>,
           }}
           component={List}
         />
@@ -82,7 +84,7 @@ export default function App() {
             tabBarLabel: "Favorites",
             tabBarLabelStyle: { color: "black" },
             tabBarIcon: () => (
-              <Icon name="heart" type="font-awesome" color="black" size={30} />
+              <Ionicons name="heart" color="black" size={26}/>
             ),
           }}
           component={Favorites}
