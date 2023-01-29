@@ -10,10 +10,13 @@ import {
 import React, { useState, useEffect } from "react";
 import { Input } from "react-native-elements";
 import { TouchableOpacity } from "react-native";
+import { TextInput } from "react-native-gesture-handler";
 
 const List = ({ navigation }) => {
   const [isLoading, setLoading] = useState(true);
+  const [filterdData, setfilterdData] = useState([]);
   const [data, setData] = useState([]);
+  const [search, setsearch] = useState("");
 
   const getTitle = async () => {
     try {
@@ -23,10 +26,33 @@ const List = ({ navigation }) => {
 
       const json = await response.json();
 
+      then((response) => response.json());
+      then((responseJson) => {
+        setfilterdData(responseJson);
+        setData(responseJson);
+      }).catch;
+
       setData(json);
     } catch (error) {
     } finally {
       setLoading(false);
+    }
+  }
+
+  const searchFilter = (text) => {
+    if (text) {
+      const newData = data.filter((item) => {
+        const itemData = item.title
+          ? item.title.toUpperCase()
+          : "".toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setfilterdData(newData);
+      setsearch(text);
+    } else {
+      setfilterdData(data);
+      setsearch(text);
     }
   };
 
@@ -72,8 +98,17 @@ const List = ({ navigation }) => {
               </Text>
             </View>
 
+            <View style={styles.searchcontainer}>
+              <TextInput
+                placeholder="Search for hadith.."
+                style={styles.inputsearch}
+                value={search}
+                onChangeText={(text) => searchFilter(text)}
+              />
+            </View>
+
             <Text
-              style={{ fontSize: 24, top: 140, left: 20, marginBottom: 150 }}
+              style={{ fontSize: 24, top: 90, left: 20, marginBottom: 110 }}
             >
               Topics:
             </Text>
@@ -111,5 +146,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
+  },
+  searchcontainer: {
+    margin: 15,
+  },
+  inputsearch: {
+    backgroundColor: "#ededed",
+    padding: 12,
+    borderRadius: 10,
+    color: "#000",
+    borderWidth: 0.5,
+    top: 85,
   },
 });
