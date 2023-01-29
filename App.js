@@ -7,7 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
 import HadithList from "./Screens/HadithByCategory";
 import HadithInfo from "./Screens/HadithInfo";
-
+import Favorites from "./Screens/Favorites";
 export default function App() {
   const tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
@@ -40,6 +40,10 @@ export default function App() {
           options={{ headerShown: false }}
           component={HadithInfo}
         />
+        <Stack.Screen
+        name="Favorites" 
+        options={{headerShown:false}}
+        component={HadithInfo}/>
 
       </Stack.Navigator>
     );
@@ -80,7 +84,7 @@ export default function App() {
               <Icon name="heart" type="font-awesome" color="black" size={30} />
             ),
           }}
-          component={List}
+          component={Favorites}
         />
       </tab.Navigator>
     );
