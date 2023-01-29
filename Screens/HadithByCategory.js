@@ -65,7 +65,7 @@ const HadithList = (id) => {
                  left:-10,
                   top:20 ,
                   fontStyle: "italic",
-                  color: "#197784",
+                  color: "#2E6CB0",
                 }}
               >
                 {" "}
@@ -93,12 +93,12 @@ const styles = StyleSheet.create({
     width: 453,
     height: 70,
     top: 80,
-    backgroundColor: "#4B4874",
+    backgroundColor: "#0a4c91",
     alignItems: "center",
     marginBottom: 150,
   },
   ahadith: {
-    backgroundColor: "#227DA4",
+    backgroundColor: "#3c81c9",
     width: 355,
     
     borderRadius: 10,
