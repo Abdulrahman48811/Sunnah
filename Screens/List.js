@@ -26,12 +26,13 @@ const List = ({ navigation }) => {
 
       const json = await response.json();
 
-      then((response) => response.json());
-      then((responseJson) => {
-        setfilterdData(responseJson);
-        setData(responseJson);
-      }).catch;
-
+      // then((response) => response.json());
+      // then((responseJson) => {
+      //   setfilterdData(responseJson);
+      //   setData(responseJson);
+      // }).catch;
+      
+      setfilterdData(json);
       setData(json);
     } catch (error) {
     } finally {
