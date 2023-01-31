@@ -22,7 +22,7 @@ const HadithInfo = (id) => {
       await AsyncStorage.getItem('fav').then
       (favs => {
         favs = favs == null ? [] : JSON.parse(favs)
-        favs.push(value)
+        favs.push(value) 
         return AsyncStorage.setItem('fav' , JSON.stringify(favs))
       })
     
