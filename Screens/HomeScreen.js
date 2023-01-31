@@ -106,7 +106,7 @@ const HomeScreen = ({ navigation }) => {
           top: 55,
           fontSize: 20,
           lineHeight: 24,
-          color: "#ffffff",
+          color: "#00FFFF",
         }}
       >
         بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
@@ -135,6 +135,7 @@ const HomeScreen = ({ navigation }) => {
             flex: "none",
             order: 0,
             flexGrow: 0,
+            color:"#00FFFF"
           }}
         >
           السلام عليكم
@@ -150,6 +151,7 @@ const HomeScreen = ({ navigation }) => {
             order: 1,
             flexGrow: 0,
             top: 30,
+            color:"#1A3333"
           }}
         >
           {isLoading ? <ActivityIndicator /> : hijriDate}
@@ -158,19 +160,19 @@ const HomeScreen = ({ navigation }) => {
 
       <View>
         <Card containerStyle={styles.hadith}>
-          <Card.Title style={{color:"black"}}
+          <Card.Title style={{color:"#1A3333"}}
             onPress={() => {
               navigation.navigate("HadithInfo", { itemid: hadeith });
             }}
           >
             Hadith Of The Day
           </Card.Title>
-          <TouchableOpacity
+          <TouchableOpacity 
             onPress={() => {
               navigation.navigate("HadithInfo", { itemid: hadeith });
             }}
           >
-            <Text>{data.hadeeth} </Text>
+            <Text style={{color:"#00FFFF"}}>{data.hadeeth} </Text>
           </TouchableOpacity>
         </Card>
       </View>
@@ -211,10 +213,10 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#727cd4",
+    backgroundColor: "#206565",
   },
   hadith: {
-    backgroundColor: "#9fa2bf",
+    backgroundColor: "#129A9A",
     height: 231,
     width: 343,
     marginTop: 250,
