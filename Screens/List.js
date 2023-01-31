@@ -73,7 +73,7 @@ const List = ({ navigation }) => {
                   right: 40,
                   top: 20,
                   fontStyle: "italic",
-                  color: "#9496a1",
+                  color: "#19A399",
                 }}
               >
                 {" "}
@@ -117,17 +117,17 @@ export default List;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#8e8f91",
+    backgroundColor: "#19A399",
   },
   header: {
     width: 493,
     height: 70,
     top: 80,
-    backgroundColor: "#5d5f66",
+    backgroundColor: "#1C3634",
     alignItems: "center",
   },
   item: {
-    backgroundColor: "#a1a2ab",
+    backgroundColor: "#246C66",
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
+    color:"#00FFEC"
   },
   searchcontainer: {
     margin: 15,
