@@ -55,7 +55,7 @@ export default function App() {
     return (
       <tab.Navigator
         screenOptions={{
-          tabBarStyle: { backgroundColor: "#aaacbf" },
+          tabBarStyle: { backgroundColor: "#19A399" },
           headerShown: false,
         }}
       >
@@ -63,8 +63,8 @@ export default function App() {
           name="Home"
           options={{
             tabBarLabel: "Home",
-            tabBarLabelStyle: { color: "black" },
-            tabBarIcon: () => <Ionicons name="home" color="black" size={26}/>,
+            tabBarLabelStyle: { color: "#00FFEC" },
+            tabBarIcon: () => <Ionicons name="home" color="#00FFEC" size={26}/>,
           }}
           component={HomeScreen}
         />
@@ -73,8 +73,8 @@ export default function App() {
           options={{
             tabBarLabel: "List",
 
-            tabBarLabelStyle: { color: "black" },
-            tabBarIcon: () => <Ionicons name="bookmarks" color="black" size={26}/>,
+            tabBarLabelStyle: { color: "#00FFEC" },
+            tabBarIcon: () => <Ionicons name="bookmarks" color="#00FFEC" size={26}/>,
           }}
           component={List}
         />
@@ -82,9 +82,9 @@ export default function App() {
           name="Favorites"
           options={{
             tabBarLabel: "Favorites",
-            tabBarLabelStyle: { color: "black" },
+            tabBarLabelStyle: { color: "#00FFEC" },
             tabBarIcon: () => (
-              <Ionicons name="heart" color="black" size={26}/>
+              <Ionicons name="heart" color="#00FFEC" size={26}/>
             ),
           }}
           component={Favorites}
