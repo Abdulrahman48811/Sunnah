@@ -14,7 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const HadithInfo = (id) => {
   const [dataen, setdataen] = useState([]);
   const [dataar, setdataar] = useState([]);
-  const data = "";
+  
   const HadithID = id.route.params.itemid;
    
    const storeData = async (value) => {
@@ -23,14 +23,27 @@ const HadithInfo = (id) => {
       (favs => {
         favs = favs == null ? [] : JSON.parse(favs)
         favs.push(value) 
+        
         return AsyncStorage.setItem('fav' , JSON.stringify(favs))
+       ;
       })
     
     } catch (error) {
       console.error();
     }
    }
-   
+   const getData = async (value) => {
+    try {
+      await AsyncStorage.getItem('fav').then
+      (favs => {
+        favs = favs == null ? [] : JSON.parse(favs);
+        console.log(favs)
+      })
+    
+    } catch (error) {
+      console.error();
+    }
+   }
 
   const getHadithAr = async () => {
     try {
@@ -57,6 +70,7 @@ const HadithInfo = (id) => {
   useEffect(() => {
     getHadithEn();
     getHadithAr();
+    getData();
     
     
   }, []);
