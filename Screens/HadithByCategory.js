@@ -46,7 +46,7 @@ const HadithList = (id) => {
       }}
     >
       <Text
-        style={{ fontSize: 12, top: 10, marginBottom: 20, marginRight:7, marginLeft: 7, }}
+        style={{color:"#1C3634", fontSize: 12, top: 10, marginBottom: 20, marginRight:7, marginLeft: 7, }}
       >
         {title}
       </Text>
@@ -65,7 +65,7 @@ const HadithList = (id) => {
                  left:-10,
                   top:20 ,
                   fontStyle: "italic",
-                  color: "#2E6CB0",
+                  color: "#19A399",
                 }}
               >
                 {" "}
@@ -87,23 +87,23 @@ export default HadithList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#2E6CB0",
+    backgroundColor: "#19A399",
   },
   header: {
     width: 453,
     height: 70,
     top: 80,
-    backgroundColor: "#0a4c91",
+    backgroundColor: "#1C3634",
     alignItems: "center",
     marginBottom: 150,
   },
   ahadith: {
-    backgroundColor: "#3c81c9",
+    backgroundColor: "#00FFEC",
     width: 355,
     
     borderRadius: 10,
     // marginLeft: 5,
-    borderColor: "black",
+    borderColor: "#1C3634",
     borderWidth: 1,
     alignSelf: "center",
     marginVertical: 8,
