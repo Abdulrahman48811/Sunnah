@@ -126,7 +126,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
+      <FlatList showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <>
             <Text
