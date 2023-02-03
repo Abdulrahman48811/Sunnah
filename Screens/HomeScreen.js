@@ -221,8 +221,8 @@ const styles = StyleSheet.create({
     width: 343,
     marginTop: 250,
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: "black",
+    borderWidth: 2,
+    borderColor: "#00FFFF",
     borderRadius: 15,
   },
   quran: {
