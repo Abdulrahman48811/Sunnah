@@ -15,7 +15,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import List from "./List";
 import { color } from "@rneui/base";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 import { Link } from "@react-navigation/native";
 
 const tab = createBottomTabNavigator();
@@ -34,6 +34,7 @@ const HomeScreen = ({ navigation }) => {
   const [date, setDate] = useState([]);
   const [monthhijri, setMonth] = useState([]);
   const [abhijri, setAb] = useState([]);
+  const [Names, setNames] = useState([]);
   // const [audio, SetAudio] = useState([]);
   // const [sound, setSound] = React.useState();
   // const [Play, setPlay] = useState("play");
@@ -50,6 +51,17 @@ const HomeScreen = ({ navigation }) => {
       const json = await response.json();
 
       setdata(json);
+    } catch (error) {}
+  };
+  const getNames = async () => {
+    try {
+      const response = await fetch(
+        `http://api.aladhan.com/asmaAlHusna/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99`
+      );
+
+      const json = await response.json();
+
+      setNames(json.data);
     } catch (error) {}
   };
 
@@ -81,129 +93,129 @@ const HomeScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
+  const Item = ({ name, transliteration,english }) => (
+    
+      <View style={styles.names}>
+        <Text > {name} {transliteration}</Text>
+        <Text>{english} </Text>
+      </View>
+    
+  );
+
+  const renderItem = ({item}) => <Item name={item.name} transliteration={item.transliteration} english={item.en.meaning}/>;
 
   useEffect(() => {
     getDate();
-    // getAudio();
+    
     getHadith();
+    getNames();
   }, []);
-  // let quranAudio = audio;
+   
   let hijrimonth = monthhijri;
   let hijriDay = date.day;
   let hijriYear = date.year;
   let hijriAb = abhijri;
   let hijriDate = hijrimonth + " " + hijriDay + " " + hijriYear + " " + hijriAb;
-
-  // let status = Play;
+  
+ 
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          position: "absolute",
-          width: 225,
-          height: 24,
-          left: 240,
-          top: 55,
-          fontSize: 20,
-          lineHeight: 24,
-          color: "#00FFFF",
-        }}
-      >
-        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-      </Text>
-      <Link to="google.com"></Link>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          padding: 0,
-          position: "absolute",
-          width: 243,
-          height: 114,
-          left: 21,
-          top: 100,
-        }}
-      >
-        <Text
-          style={{
-            width: 159,
-            height: 29,
-            fontSize: 24,
-            fontWeight: "400",
-            lineHeight: 29,
-            flex: "none",
-            order: 0,
-            flexGrow: 0,
-            color:"#00FFFF"
-          }}
-        >
-          السلام عليكم
-        </Text>
-        <Text
-          style={{
-            width: 243,
-            height: 49,
-            fontWeight: "400",
-            fontSize: 16,
-            lineHeight: 19,
-            flex: "none",
-            order: 1,
-            flexGrow: 0,
-            top: 30,
-            color:"#1A3333"
-          }}
-        >
-          {isLoading ? <ActivityIndicator /> : hijriDate}
-        </Text>
-      </View>
-
-      <View>
-        <Card containerStyle={styles.hadith}>
-          <Card.Title style={{color:"#1A3333"}}
-            onPress={() => {
-              navigation.navigate("HadithInfo", { itemid: hadeith });
-            }}
-          >
-            Hadith Of The Day
-          </Card.Title>
-          <TouchableOpacity 
-            onPress={() => {
-              navigation.navigate("HadithInfo", { itemid: hadeith });
-            }}
-          >
-            <Text style={{color:"#00FFFF"}}>{data.hadeeth} </Text>
-          </TouchableOpacity>
-        </Card>
-      </View>
-      <Text style={styles.quran}>
-        Quran recitation of the Day: Minshawi Al-Asr
-      </Text>
-      {/* <View style={styles.audio}>
-        <View style={{ top: 17, left: 35 }}>
-          <Icon
-            name={status}
-            type="font-awesome"
-            color="black"
-            style={{ width: 20, height: 26.3 }}
-            onPress={async () => {
-              if (!playAudio) {
-                await Audio.Sound.createAsync(
-                  { uri: audio },
-                  { shouldPlay: "true" }
-                );
-
-                setPlay("pause");
-                setPlayAudio(true);
-              } else {
-                setPlay("play");
-                setPlayAudio(false);
-              }
-            }}
-          />
-        </View>
-      </View> */}
-
+      <FlatList
+        ListHeaderComponent={
+          <>
+           
+            <Text
+              style={{
+                position: "absolute",
+                width: 225,
+                height: 24,
+                left: 240,
+                top: 55,
+                fontSize: 20,
+                lineHeight: 24,
+                color: "#00FFFF",
+              }}
+            >
+              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            </Text>
+            
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                padding: 0,
+                position: "absolute",
+                width: 243,
+                height: 114,
+                left: 21,
+                top: 100,
+              }}
+            >
+              <Text
+                style={{
+                  width: 159,
+                  height: 29,
+                  fontSize: 24,
+                  fontWeight: "400",
+                  lineHeight: 29,
+                  flex: "none",
+                  order: 0,
+                  flexGrow: 0,
+                  color: "#00FFFF",
+                }}
+              >
+                السلام عليكم
+              </Text>
+              <Text
+                style={{
+                  width: 243,
+                  height: 49,
+                  fontWeight: "400",
+                  fontSize: 16,
+                  lineHeight: 19,
+                  flex: "none",
+                  order: 1,
+                  flexGrow: 0,
+                  top: 30,
+                  color: "#1A3333",
+                }}
+              >
+                {isLoading ? <ActivityIndicator /> : hijriDate}
+              </Text>
+            </View>
+            <View>
+              <Card containerStyle={styles.hadith}>
+                <Card.Title
+                  style={{ color: "#1A3333" }}
+                  onPress={() => {
+                    navigation.navigate("HadithInfo", { itemid: hadeith });
+                  }}
+                >
+                  Hadith Of The Day
+                </Card.Title>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("HadithInfo", { itemid: hadeith });
+                  }}
+                >
+                  <Text style={{ color: "#00FFFF" }}>{data.hadeeth} </Text>
+                </TouchableOpacity>
+              </Card>
+              <Text style={{left:150 ,color:"#19A399" ,fontSize:20, top:15 }}>
+                Names of Allah:
+              </Text>
+            </View>
+            
+           
+            
+          </>
+        }
+        data={Names}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={{paddingBottom:200}}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -231,13 +243,17 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     top: 40,
   },
-  // audio: {
-  //   position: "absolute",
-  //   width: 330,
-  //   height: 60,
-  //   left: 50,
-  //   top: 590,
-  //   backgroundColor: "#d9d9d9",
-  //   borderRadius: 15,
-  // },
+  names: {
+    backgroundColor: "#00FFEC",
+    alignItems:"center",
+    width: 343,
+    height:45,
+    top:50,
+    alignSelf: "center",
+    borderWidth: 2,
+    borderColor: "#00FFFF",
+    
+    borderRadius: 15,
+    marginVertical:5
+  }
 });
