@@ -5,9 +5,10 @@ import {
   View,
   ActivityIndicator,
   FlatList,
+  ScrollView
 } from "react-native";
 import React from "react";
-import { Icon } from "react-native-elements";
+import { Button, Icon } from "react-native-elements";
 import { useState, useEffect } from "react";
 import { Card } from "react-native-elements";
 import { Audio } from "expo-av";
@@ -34,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
   const [date, setDate] = useState([]);
   const [monthhijri, setMonth] = useState([]);
   const [abhijri, setAb] = useState([]);
-  const [Names, setNames] = useState([]);
+
   // const [audio, SetAudio] = useState([]);
   // const [sound, setSound] = React.useState();
   // const [Play, setPlay] = useState("play");
@@ -53,31 +54,9 @@ const HomeScreen = ({ navigation }) => {
       setdata(json);
     } catch (error) {}
   };
-  const getNames = async () => {
-    try {
-      const response = await fetch(
-        `http://api.aladhan.com/asmaAlHusna/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99`
-      );
 
-      const json = await response.json();
 
-      setNames(json.data);
-    } catch (error) {}
-  };
 
-  // const getAudio = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://api.quran.com/api/v4/chapter_recitations/9?language=en"
-  //     );
-
-  //     const json = await response.json();
-  //     SetAudio(json.audio_files[102].audio_url);
-  //   } catch (error) {
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const getDate = async () => {
     try {
@@ -93,20 +72,13 @@ const HomeScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
-  const Item = ({ name, transliteration,english }) => (
-    
-      <View style={styles.names}>
-        <Text > {name} {transliteration}</Text>
-        <Text>{english} </Text>
-      </View>
-    
-  );
 
+  
   useEffect(() => {
     getDate();
 
     getHadith();
-    getNames();
+
   }, []);
 
   let hijrimonth = monthhijri;
@@ -116,10 +88,9 @@ const HomeScreen = ({ navigation }) => {
   let hijriDate = hijrimonth + " " + hijriDay + " " + hijriYear + " " + hijriAb;
 
   return (
-    <View style={styles.container}>
-      <FlatList showsVerticalScrollIndicator={false}
-        ListHeaderComponent={
-          <>
+    <ScrollView style={styles.container}>
+      
+       
             <Text
               style={{
                 position: "absolute",
@@ -201,16 +172,19 @@ const HomeScreen = ({ navigation }) => {
               <Text style={{left:150 ,color:"#19A399" ,fontSize:20, top:15 }}>
                 Names of Allah:
               </Text>
+              <TouchableOpacity 
+              style={styles.names}
+              onPress={() => {
+                navigation.navigate("NamesOfA")
+              }}
+              >
+                <Text>Names of Allah</Text>
+              </TouchableOpacity>
             </View>
-          </>
-        }
-        data={Names}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={{paddingBottom:200}}
-      />
+        
+      
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 };
 export default HomeScreen;
@@ -237,16 +211,15 @@ const styles = StyleSheet.create({
     top: 40,
   },
   names: {
-    backgroundColor: "#00FFEC",
-    alignItems: "center",
+    backgroundColor: "#129A9A",
+    height:80,
     width: 343,
-    height: 45,
-    top: 50,
+    marginTop: 25,
     alignSelf: "center",
     borderWidth: 2,
     borderColor: "#00FFFF",
-
     borderRadius: 15,
-    marginVertical: 5,
-  },
+    alignItems:"center"
+  }
+ 
 });
