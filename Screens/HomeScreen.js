@@ -86,58 +86,83 @@ const HomeScreen = ({ navigation }) => {
     <ScrollView style={styles.container}>
       <Text
         style={{
+          position: "relative",
+          width: 225,
+          height: 24,
+          // right: -50,
+          marginLeft: 20,
+          top: 55,
+          fontSize: 22,
+          lineHeight: 24,
+          color: "#00FFFF",
+        }}
+      >
+        HadithøName
+      </Text>
+      <Text
+        style={{
           position: "absolute",
           width: 225,
           height: 24,
-          left: 240,
+          // left: 190,
+          marginLeft: 230,
           top: 55,
-          fontSize: 20,
+          fontSize: 15,
           lineHeight: 24,
           color: "#00FFFF",
         }}
       >
         بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
       </Text>
-
+      <View style={styles.description}>
+        <Text>
+          description somewords maybe mayeb description somewords maybe
+          description somewords maybe description somewords maybe
+        </Text>
+      </View>
       <View
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          padding: 0,
-          position: "absolute",
-          width: 243,
-          height: 114,
-          left: 21,
-          top: 100,
+          marginTop: 15,
+          // padding: 0,
+          // position: "absolute",
+          // width: 243,
+          // height: 114,
+          // left: 21,
+          // top: 100,
         }}
       >
         <Text
           style={{
             width: 159,
             height: 29,
-            fontSize: 24,
+            fontSize: 22,
             fontWeight: "400",
             lineHeight: 29,
-            flex: "none",
-            order: 0,
-            flexGrow: 0,
+            // flex: "none",
+            // order: 0,
+            // flexGrow: 0,
             color: "#00FFFF",
+            marginLeft: 260,
           }}
         >
           السلام عليكم
         </Text>
         <Text
           style={{
-            width: 243,
-            height: 49,
+            // width: 243,
+            // height: 49,
             fontWeight: "400",
-            fontSize: 16,
+            fontSize: 15,
             lineHeight: 19,
             flex: "none",
             order: 1,
             flexGrow: 0,
-            top: 30,
+            marginTop: -20,
+            marginLeft: 20,
+            // top: 30,
             color: "#1A3333",
           }}
         >
@@ -202,12 +227,20 @@ const HomeScreen = ({ navigation }) => {
             }}
             style={{ borderRadius: 9 }}
           >
-            <View style={{ borderRadius: 9, borderWidth: 1, marginTop: 7, borderColor: "#1A2333" }}>
+            <View
+              style={{
+                borderRadius: 9,
+                borderWidth: 1,
+                marginTop: 7,
+                borderColor: "#1A2333",
+              }}
+            >
               <Text
                 style={{
                   fontSize: 10,
                   fontWeight: "bold",
-                  marginRight: 50, marginLeft: 50,
+                  marginRight: 50,
+                  marginLeft: 50,
                   // marginRight:
                   marginTop: 3,
                   marginBottom: 3,
@@ -236,7 +269,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#129A9A",
     height: 231,
     width: 343,
-    marginTop: 250,
+    marginTop: 40,
     alignSelf: "center",
     borderWidth: 2,
     borderColor: "#00FFFF",
@@ -257,6 +290,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#00FFFF",
     borderRadius: 15,
-    alignItems:"center"
+    alignItems: "center",
+  },
+  description: {
+    marginLeft: 20,
+    marginTop: 70,
   },
 });
