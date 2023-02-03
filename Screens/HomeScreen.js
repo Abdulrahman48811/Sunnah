@@ -93,37 +93,43 @@ const HomeScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
-  const Item = ({ name, transliteration,english }) => (
-    
-      <View style={styles.names}>
-        <Text > {name} {transliteration}</Text>
-        <Text>{english} </Text>
-      </View>
-    
+  const Item = ({ name, transliteration, english, id }) => (
+    <View style={styles.names}>
+      <Text>
+        {" "}
+        {name} {transliteration}{" "}
+      </Text>
+      <Text>{english} </Text>
+    </View>
   );
 
-  const renderItem = ({item}) => <Item name={item.name} transliteration={item.transliteration} english={item.en.meaning}/>;
+  const renderItem = ({ item }) => (
+    <Item
+      name={item.name}
+      transliteration={item.transliteration}
+      english={item.en.meaning}
+      id={item.number}
+    />
+  );
 
   useEffect(() => {
     getDate();
-    
+
     getHadith();
     getNames();
   }, []);
-   
+
   let hijrimonth = monthhijri;
   let hijriDay = date.day;
   let hijriYear = date.year;
   let hijriAb = abhijri;
   let hijriDate = hijrimonth + " " + hijriDay + " " + hijriYear + " " + hijriAb;
-  
- 
+
   return (
     <View style={styles.container}>
       <FlatList
         ListHeaderComponent={
           <>
-           
             <Text
               style={{
                 position: "absolute",
@@ -138,7 +144,7 @@ const HomeScreen = ({ navigation }) => {
             >
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </Text>
-            
+
             <View
               style={{
                 display: "flex",
@@ -202,19 +208,18 @@ const HomeScreen = ({ navigation }) => {
                   <Text style={{ color: "#00FFFF" }}>{data.hadeeth} </Text>
                 </TouchableOpacity>
               </Card>
-              <Text style={{left:150 ,color:"#19A399" ,fontSize:20, top:15 }}>
+              <Text
+                style={{ left: 150, color: "#19A399", fontSize: 20, top: 15 }}
+              >
                 Names of Allah:
               </Text>
             </View>
-            
-           
-            
           </>
         }
         data={Names}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={{paddingBottom:200}}
+        keyExtractor={(item) => item.number}
+        contentContainerStyle={{ paddingBottom: 200 }}
       />
       <StatusBar style="auto" />
     </View>
@@ -245,15 +250,15 @@ const styles = StyleSheet.create({
   },
   names: {
     backgroundColor: "#00FFEC",
-    alignItems:"center",
+    alignItems: "center",
     width: 343,
-    height:45,
-    top:50,
+    height: 45,
+    top: 50,
     alignSelf: "center",
     borderWidth: 2,
     borderColor: "#00FFFF",
-    
+
     borderRadius: 15,
-    marginVertical:5
-  }
+    marginVertical: 5,
+  },
 });
