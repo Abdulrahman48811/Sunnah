@@ -93,23 +93,13 @@ const HomeScreen = ({ navigation }) => {
       setLoading(false);
     }
   };
-  const Item = ({ name, transliteration, english, id }) => (
-    <View style={styles.names}>
-      <Text>
-        {" "}
-        {name} {transliteration}{" "}
-      </Text>
-      <Text>{english} </Text>
-    </View>
-  );
-
-  const renderItem = ({ item }) => (
-    <Item
-      name={item.name}
-      transliteration={item.transliteration}
-      english={item.en.meaning}
-      id={item.number}
-    />
+  const Item = ({ name, transliteration,english }) => (
+    
+      <View style={styles.names}>
+        <Text > {name} {transliteration}</Text>
+        <Text>{english} </Text>
+      </View>
+    
   );
 
   useEffect(() => {
@@ -127,7 +117,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
+      <FlatList showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <>
             <Text
@@ -208,9 +198,7 @@ const HomeScreen = ({ navigation }) => {
                   <Text style={{ color: "#00FFFF" }}>{data.hadeeth} </Text>
                 </TouchableOpacity>
               </Card>
-              <Text
-                style={{ left: 150, color: "#19A399", fontSize: 20, top: 15 }}
-              >
+              <Text style={{left:150 ,color:"#19A399" ,fontSize:20, top:15 }}>
                 Names of Allah:
               </Text>
             </View>
@@ -218,8 +206,8 @@ const HomeScreen = ({ navigation }) => {
         }
         data={Names}
         renderItem={renderItem}
-        keyExtractor={(item) => item.number}
-        contentContainerStyle={{ paddingBottom: 200 }}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={{paddingBottom:200}}
       />
       <StatusBar style="auto" />
     </View>

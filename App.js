@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
 import HadithList from "./Screens/HadithByCategory";
 import HadithInfo from "./Screens/HadithInfo";
+import NamesOfA from "./Screens/NAMES";
 import Ionicons from "react-native-vector-icons/Ionicons";
 // import Ionicons from "@expo/vector-icons/Ionicons";
 import Favorites from "./Screens/Favorites";
@@ -47,7 +48,11 @@ export default function App() {
         name="Favorites" 
         options={{headerShown:false}}
         component={HadithInfo}/>
-
+        <Stack.Screen
+        name="NamesOfA" 
+        options={{headerShown:false}}
+        component={NamesOfA}/>
+       
       </Stack.Navigator>
     );
   };
