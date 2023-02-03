@@ -5,7 +5,7 @@ import {
   View,
   ActivityIndicator,
   FlatList,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import React from "react";
 import { Button, Icon } from "react-native-elements";
@@ -55,9 +55,6 @@ const HomeScreen = ({ navigation }) => {
     } catch (error) {}
   };
 
-
-
-
   const getDate = async () => {
     try {
       const response = await fetch("http://api.aladhan.com/v1/gToH");
@@ -73,12 +70,10 @@ const HomeScreen = ({ navigation }) => {
     }
   };
 
-  
   useEffect(() => {
     getDate();
 
     getHadith();
-
   }, []);
 
   let hijrimonth = monthhijri;
@@ -89,100 +84,143 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
-      
-       
-            <Text
-              style={{
-                position: "absolute",
-                width: 225,
-                height: 24,
-                left: 240,
-                top: 55,
-                fontSize: 20,
-                lineHeight: 24,
-                color: "#00FFFF",
-              }}
-            >
-              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            </Text>
+      <Text
+        style={{
+          position: "absolute",
+          width: 225,
+          height: 24,
+          left: 240,
+          top: 55,
+          fontSize: 20,
+          lineHeight: 24,
+          color: "#00FFFF",
+        }}
+      >
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+      </Text>
 
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                padding: 0,
-                position: "absolute",
-                width: 243,
-                height: 114,
-                left: 21,
-                top: 100,
-              }}
-            >
-              <Text
-                style={{
-                  width: 159,
-                  height: 29,
-                  fontSize: 24,
-                  fontWeight: "400",
-                  lineHeight: 29,
-                  flex: "none",
-                  order: 0,
-                  flexGrow: 0,
-                  color: "#00FFFF",
-                }}
-              >
-                السلام عليكم
-              </Text>
-              <Text
-                style={{
-                  width: 243,
-                  height: 49,
-                  fontWeight: "400",
-                  fontSize: 16,
-                  lineHeight: 19,
-                  flex: "none",
-                  order: 1,
-                  flexGrow: 0,
-                  top: 30,
-                  color: "#1A3333",
-                }}
-              >
-                {isLoading ? <ActivityIndicator /> : hijriDate}
-              </Text>
-            </View>
-            <View>
-              <Card containerStyle={styles.hadith}>
-                <Card.Title
-                  style={{ color: "#1A3333" }}
-                  onPress={() => {
-                    navigation.navigate("HadithInfo", { itemid: hadeith });
-                  }}
-                >
-                  Hadith Of The Day
-                </Card.Title>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("HadithInfo", { itemid: hadeith });
-                  }}
-                >
-                  <Text style={{ color: "#00FFFF" }}>{data.hadeeth} </Text>
-                </TouchableOpacity>
-              </Card>
-              <Text style={{left:150 ,color:"#19A399" ,fontSize:20, top:15 }}>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          padding: 0,
+          position: "absolute",
+          width: 243,
+          height: 114,
+          left: 21,
+          top: 100,
+        }}
+      >
+        <Text
+          style={{
+            width: 159,
+            height: 29,
+            fontSize: 24,
+            fontWeight: "400",
+            lineHeight: 29,
+            flex: "none",
+            order: 0,
+            flexGrow: 0,
+            color: "#00FFFF",
+          }}
+        >
+          السلام عليكم
+        </Text>
+        <Text
+          style={{
+            width: 243,
+            height: 49,
+            fontWeight: "400",
+            fontSize: 16,
+            lineHeight: 19,
+            flex: "none",
+            order: 1,
+            flexGrow: 0,
+            top: 30,
+            color: "#1A3333",
+          }}
+        >
+          {isLoading ? <ActivityIndicator /> : hijriDate}
+        </Text>
+      </View>
+      <View>
+        <Card containerStyle={styles.hadith}>
+          <Card.Title
+            style={{ color: "#1A3333" }}
+            onPress={() => {
+              navigation.navigate("HadithInfo", { itemid: hadeith });
+            }}
+          >
+            Hadith Of The Day
+          </Card.Title>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("HadithInfo", { itemid: hadeith });
+            }}
+          >
+            <Text style={{ color: "#00FFFF" }}>{data.hadeeth} </Text>
+          </TouchableOpacity>
+        </Card>
+        {/* <Text style={{left:150 ,color:"#19A399" ,fontSize:20, top:15 }}>
                 Names of Allah:
-              </Text>
-              <TouchableOpacity 
-              style={styles.names}
-              onPress={() => {
-                navigation.navigate("NamesOfA")
-              }}
+              </Text> */}
+        <TouchableOpacity
+          style={styles.names}
+          onPress={() => {
+            navigation.navigate("NamesOfA");
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: "bold",
+              marginLeft: 10,
+              marginTop: 5,
+              color: "#1A3333",
+            }}
+          >
+            Names of Allah
+          </Text>
+          <Text
+            style={{
+              fontSize: 10,
+              fontWeight: "bold",
+              marginLeft: 10,
+              marginRight: 5,
+              marginTop: 5,
+              color: "#1A3333",
+            }}
+          >
+            Prophet Muhammad (ﷺ) said, “Allah has ninety-nine names, i.e.
+            one-hundred minus one, and whoever knows them will go to Paradise.”
+            (Sahih Bukhari 50:894)
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("NamesOfA");
+            }}
+            style={{ borderRadius: 9 }}
+          >
+            <View style={{ borderRadius: 9, borderWidth: 1, marginTop: 7, borderColor: "#1A2333" }}>
+              <Text
+                style={{
+                  fontSize: 10,
+                  fontWeight: "bold",
+                  marginRight: 50, marginLeft: 50,
+                  // marginRight:
+                  marginTop: 3,
+                  marginBottom: 3,
+                  color: "#1A2333",
+                }}
               >
-                <Text>Names of Allah</Text>
-              </TouchableOpacity>
+                View All
+              </Text>
             </View>
-        
-      
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
+
       <StatusBar style="auto" />
     </ScrollView>
   );
@@ -212,7 +250,7 @@ const styles = StyleSheet.create({
   },
   names: {
     backgroundColor: "#129A9A",
-    height:80,
+    height: 105,
     width: 343,
     marginTop: 25,
     alignSelf: "center",
@@ -220,6 +258,5 @@ const styles = StyleSheet.create({
     borderColor: "#00FFFF",
     borderRadius: 15,
     alignItems:"center"
-  }
- 
+  },
 });
