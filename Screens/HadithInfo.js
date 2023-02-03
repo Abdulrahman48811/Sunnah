@@ -82,35 +82,35 @@ const HadithInfo = (id) => {
       </View>
       
       <View style={{ width: 350,  top: 113, left: 40 }}>
-        <Text style={{ fontSize: 15 , color:'white'}}> {dataar.hadeeth}</Text>
-        <Text style={{top:15 ,color:'orange'}}> {dataar.attribution} </Text>
+        <Text style={{ fontSize: 15 , color:'#00FFEC'}}> {dataar.hadeeth}</Text>
+        <Text style={{top:15 ,color:'#000000'}}> {dataar.attribution} </Text>
         
       </View>
 
       <View style={{ top: 175, left: 40, width: 350  }}>
-        <Text style={{ fontSize: 15, color:'white' }}>{dataen.hadeeth}</Text>
+        <Text style={{ fontSize: 15, color:'#00FFEC' }}>{dataen.hadeeth}</Text>
         {/* <Text style={{top:8}}>{dataen.grade}</Text> */}
       </View>
       <View style={{left:40, top:225 }}>
-        <Text style={{fontSize:25 , color:'#DCA6A6'}}>
+        <Text style={{fontSize:25 , color:'#246C66'}}>
            Hadith Explanation:
         </Text>
-        <Text style={{width:350, color:'white'}}>
+        <Text style={{width:350, color:'#00FFEC'}}>
             {dataen.explanation}
         </Text>
         <View style={{left:-200, top:10, height:80}}>
-        <Icon   name="bookmark" type="font-awesome" color={"white"} size={45} onPress={() => storeData(HadithID) }/>
+        <Icon   name="bookmark" type="font-awesome" color={"#00FFEC"} size={45} onPress={() => storeData(HadithID) }/>
         </View>
-        <Text style={{top:15, color:'#a8a3b5'}}>
+        <Text style={{top:15, color:'#246C66'}}>
             Refrence:
         </Text>
-        <Text style={{top:30, width:350, color:'white', fontSize:8}}>
+        <Text style={{top:30, width:350, color:'#00FFEC', fontSize:8}}>
             
             {dataar.reference}
         </Text>
 
         <View style={{top:170, left:140}}>
-           <Text style={{color:"#976C69"}}>App Name</Text>
+           <Text style={{color:"#00FFEC"}}>App Name</Text>
         </View>
       </View>
 
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
   container: {
     
    
-    backgroundColor: "#7B5A58",
+    backgroundColor: "#1C3634",
   },
 });
