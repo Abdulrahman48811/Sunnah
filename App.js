@@ -64,7 +64,7 @@ export default function App() {
           options={{
             tabBarLabel: "Home",
             tabBarLabelStyle: { color: "#00FFEC" },
-            tabBarIcon: () => <Ionicons name="home" color="#00FFEC" size={26}/>,
+            tabBarIcon: () => <Ionicons name="home" color="#00FFEC"  size={26}/>,
           }}
           component={HomeScreen}
         />
