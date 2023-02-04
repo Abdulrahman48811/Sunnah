@@ -14,31 +14,47 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const HadithInfo = (id) => {
   const [dataen, setdataen] = useState([]);
   const [dataar, setdataar] = useState([]);
-
+  const [ favorites, setFavorites ] = useState([]);
   const HadithID = id.route.params.itemid;
 
   const storeData = async (value) => {
-    try {
-      await AsyncStorage.getItem("fav").then((favs) => {
-        favs = favs == null ? [] : JSON.parse(favs);
-        favs.push(value);
+    await AsyncStorage.setItem('@storage_key', JSON.stringify([...favorites, id]))
+    setFavorites([...favorites, id]);
+    // try {
+    //   await AsyncStorage.getItem("fav").then((favs) => {
+    //     favs = favs == null ? [] : JSON.parse(favs);
+    //     favs.push(value);
 
-        return AsyncStorage.setItem("fav", JSON.stringify(favs));
-      });
-    } catch (error) {
-      console.error();
-    }
+    //     return AsyncStorage.setItem("fav", JSON.stringify(favs));
+    //   });
+    // } catch (error) {
+    //   console.error();
+    // }
   };
   const getData = async (value) => {
     try {
-      await AsyncStorage.getItem("fav").then((favs) => {
-        favs = favs == null ? [] : JSON.parse(favs);
-        console.log(favs);
-      });
-    } catch (error) {
-      console.error();
+    //   await AsyncStorage.getItem("fav").then((favs) => {
+    //     favs = favs == null ? [] : JSON.parse(favs);
+    //     console.log(favs);
+    //   });
+    // } catch (error) {
+    //   console.error();
+    // }
+
+    const value = await AsyncStorage.getItem('@storage_key')
+    if(value !== null) {
+       setFavorites(JSON.parse('@storage_key'));
     }
-  };
+} catch(e) {
+   // error reading value
+  //  console.error();
+}
+}
+
+useEffect(() => {
+  getData();
+}, [])
+
 
   const getHadithAr = async () => {
     try {
