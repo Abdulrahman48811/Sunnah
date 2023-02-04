@@ -12,6 +12,11 @@ import React, { useState, useEffect } from "react";
 
 import { TouchableOpacity } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
 const HadithList = (id) => {
   const HadithID = id.route.params.HadithID;
   const title = id.route.params.category;
