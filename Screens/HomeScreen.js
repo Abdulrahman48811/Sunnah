@@ -118,6 +118,8 @@ const HomeScreen = ({ navigation }) => {
       <Text
         style={{
           position: "absolute",
+          // display: "flex",
+          // textAlign: "right",
           width: 225,
           height: 24,
           // left: 190,
