@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import { Card } from "react-native-elements";
 import { Audio } from "expo-av";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { Adkar } from "../Shared/Adkar";
 import List from "./List";
 import { color } from "@rneui/base";
 import { TouchableOpacity } from "react-native";
@@ -43,6 +43,22 @@ const HomeScreen = ({ navigation }) => {
   const [data, setdata] = useState([]);
   // const [unmute, mute] = useState("unmute");
   const hadeith = 65054;
+  
+  // const getAdkhar = () => {
+  //   const options = {
+  //     method: 'GET',
+  //     headers: {
+  //       'X-RapidAPI-Key': '085249c0f2mshfdec8dacac5d2b7p1a1d9ajsn9a369d465393',
+  //       'X-RapidAPI-Host': 'dua-and-zikir.p.rapidapi.com'
+  //     }
+  //   };
+    
+  //   fetch('https://dua-and-zikir.p.rapidapi.com/api/v1/dua', options)
+  //     .then(response => response.json())
+  //     .then(response => console.log(response))
+  //     .catch(err => console.error(err));
+  // }
+
   const getHadith = async () => {
     try {
       const response = await fetch(
@@ -252,6 +268,12 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </TouchableOpacity>
         </TouchableOpacity>
+        <Text style={{marginLeft:140, fontSize:20}}>
+        {Adkar[0].category} 
+        </Text>
+        <Text>
+          {Adkar[0].array[0].text}
+        </Text>
       </View>
 
       <StatusBar style="auto" />
