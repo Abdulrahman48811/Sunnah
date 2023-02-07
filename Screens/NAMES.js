@@ -54,6 +54,7 @@ const NamesOfA = ({ navigation }) => {
       name={item.name}
       transliteration={item.transliteration}
       english={item.en.meaning}
+      id = {item.number}
     />
   );
   useEffect(() => {
@@ -72,7 +73,7 @@ const NamesOfA = ({ navigation }) => {
         }
         data={Names}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(Item) => Item.id}
         contentContainerStyle={{paddingBottom:200}}
       />
       <StatusBar style="auto" />
