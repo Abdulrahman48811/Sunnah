@@ -43,7 +43,7 @@ const HomeScreen = ({ navigation }) => {
   const [data, setdata] = useState([]);
   // const [unmute, mute] = useState("unmute");
   const hadeith = 65054;
-  
+
   // const getAdkhar = () => {
   //   const options = {
   //     method: 'GET',
@@ -52,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
   //       'X-RapidAPI-Host': 'dua-and-zikir.p.rapidapi.com'
   //     }
   //   };
-    
+
   //   fetch('https://dua-and-zikir.p.rapidapi.com/api/v1/dua', options)
   //     .then(response => response.json())
   //     .then(response => console.log(response))
@@ -103,39 +103,47 @@ const HomeScreen = ({ navigation }) => {
       <Text
         style={{
           position: "relative",
-          width: 225,
-          height: 24,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          flex: 1,
+          // width: 225,
+          // height: 24,
           // right: -50,
           marginLeft: 20,
+          marginRight: 20,
           top: 55,
-          fontSize: 22,
+          fontSize: 24,
           lineHeight: 24,
           color: "#00FFFF",
+          textAlign: "center",
         }}
-      >
-        HadithøName
-      </Text>
+        >
+        HadithøName{'      '}
       <Text
         style={{
-          position: "absolute",
+          // position: "absolute",
           // display: "flex",
+          // alignContent: "flex-start",
+          flexDirection: "row",
+          justifyContent: "space-between",
           // textAlign: "right",
-          width: 225,
-          height: 24,
+          // width: 225,
+          // height: 24,
           // left: 190,
-          marginLeft: 230,
+          marginRight: 20,
           top: 55,
-          fontSize: 15,
+          fontSize: 20,
           lineHeight: 24,
           color: "#00FFFF",
         }}
       >
         بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
       </Text>
+      </Text>
       <View style={styles.description}>
         <Text>
-          description somewords maybe mayeb description somewords maybe
-          description somewords maybe description somewords maybe
+          description somewords maybe mayeb descr iption som e w ords maybe desc
+          ript i onom ewords ma ybe desc ripte on somewords maybe
         </Text>
       </View>
       <View
@@ -163,7 +171,7 @@ const HomeScreen = ({ navigation }) => {
             // order: 0,
             // flexGrow: 0,
             color: "#00FFFF",
-            marginLeft: 260,
+            marginLeft: 270,
           }}
         >
           السلام عليكم
@@ -179,7 +187,7 @@ const HomeScreen = ({ navigation }) => {
             order: 1,
             flexGrow: 0,
             marginTop: -20,
-            marginLeft: 20,
+            marginLeft: 30,
             // top: 30,
             color: "#1A3333",
           }}
@@ -270,12 +278,10 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </TouchableOpacity>
         </TouchableOpacity>
-        <Text style={{marginLeft:140, fontSize:20}}>
-        {Adkar[0].category} 
+        <Text style={{ marginLeft: 140, fontSize: 20 }}>
+          {Adkar[0].category}
         </Text>
-        <Text>
-          {Adkar[0].array[0].text}
-        </Text>
+        <Text>{Adkar[0].array[0].text}</Text>
       </View>
 
       <StatusBar style="auto" />
@@ -317,7 +323,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   description: {
-    marginLeft: 20,
+    marginLeft: 30,
     marginTop: 70,
+    marginRight: 30,
   },
 });
